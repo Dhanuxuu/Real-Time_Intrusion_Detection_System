@@ -83,5 +83,39 @@ The feature analysis script processes incoming raw bytes into 2D matrices format
 | `window_size` | Integer | Dynamic structural allocation bounds set over individual network socket connections |
 
 
+# Network Intrusion Detection System (NIDS) — Project Retrospective
+
+A comprehensive overview of my experience building a real-time network security monitor, highlighting the technical stack, core learning outcomes, troubleshooting victories, and roadmap for future iterations.
+
+---
+
+## 🛠️ Technical Stack
+* **Programming Language:** Python 3.x
+* **Network Analysis Engine:** Scapy (Raw packet manipulation and injection framework)
+* **Data Processing:** Python Standard Library (`collections.defaultdict`, `threading`, `socket`)
+* **Packet Capture Driver:** Npcap (Windows packet interception architecture)
+* **Development Environment:** VS Code, Git, Python Virtual Environments (`venv`)
+
+---
+
+## 💡 Skills & Core Concepts Learned
+* **Low-Level Protocol Parsing:** Gained a deep understanding of the OSI model by capturing, inspecting, and manipulating raw Layer 3 (IP) and Layer 4 (TCP/UDP) network packets.
+* **Stateful Flow Tracking:** Developed structures to compute real-time connection telemetry, tracking live variables like active packet counts, bandwidth consumption (byte counts), and flow durations.
+* **Hermetic Environment Isolation:** Mastered dependency management using isolated local virtual environments (`.venv`), ensuring seamless deployment via precise version manifests (`requirements.txt`).
+* **Repository Defensive Hygiene:** Implemented robust `.gitignore` rules to enforce good operational security (OpSec)—safeguarding proprietary directory structures, local network credentials, and system hardware specifications from public exposure.
+
+---
+
+## ⚠️ Challenges & Troubleshooting Breakthroughs
+* **Interpreter Path Alignment:** Diagnosed and resolved configuration conflicts where global packet managers (Miniforge/Conda layers) overrode the project's local `.venv` environment context inside VS Code.
+* **Windows Network Interface Constraints:** Overcame OS-level execution blocks on raw socket listening under Windows 10 by deploying the Npcap driver in WinPcap-compatible mode to cleanly interface with the physical hardware card.
+* **Persistent Daemon Cleanup:** Refactored infinite listening structures (`while True:` loops) to listen for keyboard interrupts and process lifecycle shutdowns cleanly without leaving active network ports hanging open.
+
+---
+
+## 🔮 Future Improvements
+1. **Anomaly Detection Thresholds:** Integrate programmatic detection logic to automatically flag suspicious traffic behavior, such as rapid port scans or potential Denial of Service (DoS) spikes.
+2. **Asynchronous Packet Queueing:** Transition pipeline intake from synchronous loop frameworks to asynchronous architectures (`asyncio`) to safely buffer incoming streams under high-traffic network loads.
+3. **Live UI Dashboard:** Build an interactive terminal dashboard or local web-based telemetry display to output flowing network metrics into visual graphs in real time.
 
 
