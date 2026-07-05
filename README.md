@@ -26,10 +26,15 @@ Because this system runs on Windows, your network hardware interface needs low-l
 
 ## 🚀 Environment Configuration
 
-Execute these setup procedures using an open PowerShell console inside your project working root directory (`D:\Primary\Projects\cybersecurity\IDS`):
+Execute these setup procedures using an open VScode terminal inside your project working root directory 
 
 ### 1. Initialize Virtual Environment
 ```powershell
+python -m venv .venv
+#select a suitable interpreter and activate the virtual environment
+    #ctrl + shift + p
+    #select a suitable environment from the list (...workspace)
+    #Kill the current terminal and open a new terminal or enter the below command,
 .\.venv\Scripts\Activate.ps1
 ```
 
@@ -44,7 +49,7 @@ Windows labels local network hardware components with descriptive strings rather
 ```powershell
 .\.venv\Scripts\python.exe -c "from scapy.all import show_interfaces; show_interfaces()"
 ```
-*Note: Your device uses the wireless description **`Realtek RTL8821CE 802.11ac PCIe Adapter`**. This string has been assigned inside `app.py` as your target capturing parameter interface default value.*
+*Note: Your device uses the wireless description **`Realtek RTL8821CE Adapter`**. This string has been assigned inside `app.py` as your target capturing parameter interface default value.*
 
 ---
 
@@ -78,19 +83,5 @@ The feature analysis script processes incoming raw bytes into 2D matrices format
 | `window_size` | Integer | Dynamic structural allocation bounds set over individual network socket connections |
 
 
-
-1. Create a python virtual environment. 
-python -m venv .venv
-select a suitable interpreter and activate the virtual environment
-
-2. Open a new termianl and enter these commands
-.\.venv\Scripts\python.exe -m pip install scikit-learn 
-.\.venv\Scripts\python.exe -m pip install scapy 
-.\.venv\Scripts\python.exe -m pip install python-nmap 
-.\.venv\Scripts\python.exe -m pip install numpy
-
-or run 
-
-pip install -r requirements.txt
 
 
